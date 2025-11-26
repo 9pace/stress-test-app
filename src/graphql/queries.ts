@@ -2,12 +2,26 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-import * as APITypes from '../API';
+import * as APITypes from "../API";
 type GeneratedQuery<InputType, OutputType> = string & {
   __generatedQueryInput: InputType;
   __generatedQueryOutput: OutputType;
 };
 
+export const getRandomQuote = /* GraphQL */ `query GetRandomQuote {
+  getRandomQuote {
+    message
+    quote
+    author
+    timestamp
+    totalQuotes
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.GetRandomQuoteQueryVariables,
+  APITypes.GetRandomQuoteQuery
+>;
 export const getProject = /* GraphQL */ `query GetProject($id: ID!) {
   getProject(id: $id) {
     id
@@ -26,7 +40,10 @@ export const getProject = /* GraphQL */ `query GetProject($id: ID!) {
     __typename
   }
 }
-` as GeneratedQuery<APITypes.GetProjectQueryVariables, APITypes.GetProjectQuery>;
+` as GeneratedQuery<
+  APITypes.GetProjectQueryVariables,
+  APITypes.GetProjectQuery
+>;
 export const listProjects = /* GraphQL */ `query ListProjects(
   $filter: ModelProjectFilterInput
   $limit: Int
@@ -49,7 +66,10 @@ export const listProjects = /* GraphQL */ `query ListProjects(
     __typename
   }
 }
-` as GeneratedQuery<APITypes.ListProjectsQueryVariables, APITypes.ListProjectsQuery>;
+` as GeneratedQuery<
+  APITypes.ListProjectsQueryVariables,
+  APITypes.ListProjectsQuery
+>;
 export const getTodo = /* GraphQL */ `query GetTodo($id: ID!) {
   getTodo(id: $id) {
     id
