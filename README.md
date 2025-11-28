@@ -1,239 +1,333 @@
-<img width="1951" height="1225" alt="Screenshot 2025-11-20 at 17 24 01" src="https://github.com/user-attachments/assets/e858ce6f-397d-4107-9dd9-dc2b95576912" />
+# 💪 Fitness Goal Tracker
 
-_Unauthenticated view_
+A comprehensive fitness tracking application built with AWS Amplify Gen1, React, and TypeScript. Track your workout programs, exercises, and progress with photos while staying motivated with daily fitness quotes.
 
-<img width="1957" height="1228" alt="Screenshot 2025-11-20 at 17 23 48" src="https://github.com/user-attachments/assets/400dae37-971e-43ef-8702-8f2b2a32ba54" />
+![Fitness Goal Tracker](https://img.shields.io/badge/Fitness-Goal%20Tracker-e85d04)
+![AWS Amplify](https://img.shields.io/badge/AWS-Amplify-orange)
+![React](https://img.shields.io/badge/React-19.1-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue)
 
-_Authenticated view for Amplify project_
-# Set up the Amplify app
+## 🎯 Features
 
-## Categories
-### api
-GraphQL API with schema containing `Todo` and `Project` models.
-### auth
-Cognito-based auth using email.
-### storage
-S3-based storage for images in Todos.
-### function
-Node.js lambda function that generates inspirational quotes.
-### hosting
-Amplify console-managed hosting.
+### 💪 Workout Program Management
+- Create and manage multiple workout programs
+- Track program status: Active, Achieved, Paused, or Archived
+- Customize program colors for visual organization
+- Organize exercises within programs
 
-## Description
-This is a project board app that supports authentication. Each Project board can hold multiple Todo items, each of which has a title, description, and optionally, images. Todos do not need to be in a Project and can exist unassigned.
+### 🏋️ Exercise Tracking
+- Add individual exercises with detailed descriptions
+- Include sets, reps, and personal notes
+- Upload progress photos to track your transformation
+- Assign exercises to programs or keep them standalone
 
-Unauthenticated users can only view Projects and Todos, and cannot modify or delete them.
+### 📸 Progress Photos
+- Upload multiple photos per exercise
+- View photos in an interactive gallery
+- Download photos for your records
+- Track visual progress over time
 
-Authenticated users can create Projects and Todos, and modify/delete their own. They may add Todos to Projects that are not their own, but cannot change the Project settings.
+### 🔥 Daily Motivation
+- Get inspired with fitness motivation quotes
+- Lambda-powered quote generator
+- 20+ motivational quotes from fitness experts
 
-The images on each Todo use amplify S3 Storage. The Todos themselves use DynamoDB, and CRUD operations are via GraphQL with Amplify Api. Auth is managed through Cognito. Hosting is managed through Amplify console.
+### 🌓 Dark Mode
+- Comfortable viewing in any lighting
+- Automatic theme persistence
+- Fitness-themed color palette
 
-## Prerequisites
-Install Node 25 (stable at time of writing)
+### 🔐 Authentication & Security
+- Read-only mode for unauthenticated users
+- Full CRUD access for authenticated users
+- Owner-based permissions
+- Secure AWS Cognito authentication
+
+## 🏗️ Architecture
+
+### Backend (AWS Amplify Gen1)
+- **GraphQL API**: AppSync with DynamoDB
+- **Authentication**: Amazon Cognito
+- **Storage**: Amazon S3 for progress photos
+- **Serverless Functions**: AWS Lambda for quote generation
+- **Hosting**: Amplify Console
+
+### Frontend
+- **Framework**: React 19.1 with TypeScript
+- **Build Tool**: Vite
+- **UI Components**: AWS Amplify UI React
+- **State Management**: React Hooks
+- **Styling**: Inline styles with theme support
+
+## 📋 Prerequisites
+
+- Node.js 25+ (stable)
+- AWS Account with appropriate permissions
+- AWS Amplify CLI
 
 ```bash
 $ node -v
 v25.2.1
 ```
 
-[Amplify Gen1 Getting Started](https://docs.amplify.aws/gen1/react/start/getting-started/installation/) 
+[Amplify Gen1 Getting Started](https://docs.amplify.aws/gen1/react/start/getting-started/installation/)
 
-## Setup
+## 🚀 Setup
+
+### 1. Install Dependencies
+
 ```bash
-# in app-0
-$ npm install
-
-$ amplify init
+npm install
 ```
-- Select all default options except for "Distribution Directory Path", which will be `dist` (not `build`)
-- In this step, we are assuming that you have set up the `default` AWS profile with the relevant permissions for Amplify on your AWS account
+
+### 2. Initialize Amplify
+
+```bash
+amplify init
+```
+
+Configuration:
+- Select all default options except:
+- **Distribution Directory Path**: `dist` (not `build`)
+- Choose your AWS profile with Amplify permissions
 
 ```
 ? Initialize the project with the above configuration? No
 ? Enter a name for the environment dev
 ? Choose your default editor: Visual Studio Code
 ✔ Choose the type of app that you're building · javascript
-Please tell us about your project
 ? What javascript framework are you using react
-? Source Directory Path:  src
+? Source Directory Path: src
 ? Distribution Directory Path: dist
-? Build Command:  npm run-script build
+? Build Command: npm run-script build
 ? Start Command: npm run-script start
-Using default provider  awscloudformation
+Using default provider awscloudformation
 ? Select the authentication method you want to use: AWS profile
-
-For more information on AWS Profiles, see:
-https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html
-
-? Please choose the profile you want to use default 
+? Please choose the profile you want to use default
 ```
+
+### 3. Add API
 
 ```bash
-$ amplify add api
+amplify add api
 ```
-Default settings:
-- ❯ GraphQL
+
+Settings:
+- Choose: **GraphQL**
+- Name: `stresstestapp`
+- Authorization: **API key** (default, 7 days expiration)
+- Conflict detection: **Disabled**
+- Template: **Single object with fields**
+
+The GraphQL schema defines:
+- **Project** model: Workout programs with status tracking
+- **Todo** model: Individual exercises with image support
+- **QuoteResponse**: Motivational quotes from Lambda
+
+### 4. Add Authentication
+
+```bash
+amplify add auth
 ```
-Name: amplifytestapp2 
-Authorization modes: API key (default, expiration time: 7 days from now) 
-Conflict detection (required for DataStore): Disabled 
+
 ```
-- ❯ Single object with fields (e.g., “Todo” with ID, name, description) 
+? Do you want to use the default authentication and security configuration? Default configuration
+? How do you want users to be able to sign in? Email
+? Do you want to configure advanced settings? No, I am done.
+```
 
-Edit the schema:
-```ts
-# This "input" configures a global authorization rule to enable public access to
-# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
-input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
+### 5. Add Storage
 
-type QuoteResponse {
-  message: String!
-  quote: String!
-  author: String!
-  timestamp: String!
-  totalQuotes: Int!
-}
+```bash
+amplify add storage
+```
 
-type Query {
-  getRandomQuote: QuoteResponse @function(name: "quotegenerator-dev") 
-}
+```
+? Select from one of the below mentioned services: Content (Images, audio, video, etc.)
+? Provide a friendly name: s3d40f26c3
+? Provide bucket name: fitnesstrackerXXXXXXXX
+? Who should have access: Auth and guest users
+? What kind of access for Authenticated users? create/update, read, delete
+? What kind of access for Guest users? create/update, read, delete
+? Do you want to add a Lambda Trigger? No
+```
 
-enum ProjectStatus {
-  ACTIVE
-  COMPLETED
-  ON_HOLD
-  ARCHIVED
-}
+### 6. Add Lambda Function
 
-type Project @model @auth(rules: [
-  { allow: public, operations: [read] },
-  { allow: owner, operations: [create, read, update, delete] }
-]) {
+```bash
+amplify add function
+```
+
+```
+? Select which capability you want to add: Lambda function
+? Provide an AWS Lambda function name: quotegenerator
+? Choose the runtime: NodeJS
+? Choose the function template: Hello World
+? Do you want to configure advanced settings? Yes
+? Do you want to access other resources? No
+? Do you want to invoke this function on a recurring schedule? No
+? Do you want to enable Lambda layers? No
+? Do you want to configure environment variables? No
+? Do you want to configure secret values? No
+? Choose the package manager: NPM
+? Do you want to edit the local lambda function now? Yes
+```
+
+The function is already configured with 20 fitness motivational quotes.
+
+### 7. Deploy Backend
+
+```bash
+amplify push
+```
+
+Select **Y** for all prompts to deploy your backend infrastructure.
+
+### 8. Add Hosting (Optional)
+
+```bash
+amplify add hosting  # Choose Amplify Console
+amplify publish
+```
+
+## 💻 Development
+
+### Run Development Server
+
+```bash
+npm run dev
+```
+
+Access the app at `http://localhost:5173`
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+### Preview Production Build
+
+```bash
+npm run preview
+```
+
+### Lint Code
+
+```bash
+npm run lint
+```
+
+## 📊 Data Models
+
+### Project (Workout Program)
+```graphql
+type Project {
   id: ID!
   title: String!
   description: String
-  status: ProjectStatus!
+  status: ProjectStatus!  # ACTIVE, COMPLETED, ON_HOLD, ARCHIVED
   deadline: AWSDateTime
   color: String
-  todos: [Todo] @hasMany
+  todos: [Todo]
 }
+```
 
-type Todo @model @auth(rules: [
-  { allow: public, operations: [read] },
-  { allow: owner, operations: [create, read, update, delete] }
-]) {
+### Todo (Exercise)
+```graphql
+type Todo {
   id: ID!
   name: String!
   description: String
-  images: [String]
+  images: [String]  # S3 paths to progress photos
   projectID: ID
 }
 ```
 
+## 🎨 Color Scheme
+
+The fitness theme uses an energetic, motivating color palette:
+
+- **Primary**: `#e85d04` (Energetic Orange)
+- **Success**: `#2a9d8f` (Achievement Teal)
+- **Warning**: `#f48c06` (Pause Amber)
+- **Neutral**: `#6c757d` (Archive Gray)
+
+## 🔒 Security & Permissions
+
+### Authorization Rules
+
+**Projects & Exercises**:
+- **Public**: Read-only access
+- **Owner**: Full CRUD operations
+
+**Authentication**:
+- Cognito-managed user pools
+- Email-based sign-in
+- Owner-based access control
+
+## 📱 Features by User Type
+
+### Unauthenticated Users
+- ✅ View all workout programs
+- ✅ View all exercises
+- ✅ View progress photos
+- ❌ Cannot create, edit, or delete
+
+### Authenticated Users
+- ✅ Everything unauthenticated users can do
+- ✅ Create workout programs
+- ✅ Add exercises to any program
+- ✅ Upload progress photos
+- ✅ Edit/delete own programs and exercises
+- ✅ Get daily motivation quotes
+
+## 🛠️ Troubleshooting
+
+### Build Issues
 ```bash
-$ amplify add auth
-```
-```
- Do you want to use the default authentication and security configuration? Default configuration
- Warning: you will not be able to edit these selections. 
- How do you want users to be able to sign in? Email
- Do you want to configure advanced settings? No, I am done.
+rm -rf node_modules && npm install
+tsc -b
 ```
 
+### Amplify Backend Issues
 ```bash
-$ amplify add storage
-```
-```
-? Select from one of the below mentioned services: Content (Images, audio, video, etc.)
-✔ Provide a friendly name for your resource that will be used to label this category in the project: · s3d40f26c3
-✔ Provide bucket name: · amplifytestapp27f4b17460f7f4f8dbf123f22561e49b1
-✔ Who should have access: · Auth and guest users
-✔ What kind of access do you want for Authenticated users? · create/update, read, delete
-✔ What kind of access do you want for Guest users? · create/update, read, delete
-✔ Do you want to add a Lambda Trigger for your S3 Bucket? (y/N) · no
+amplify status
+amplify pull
 ```
 
-```bash
-$ amplify add function
-? Select which capability you want to add: Lambda function (serverless function)
-? Provide an AWS Lambda function name: quotegenerator # make sure this name matches the name under `Query` in the GraphQL schema (without -dev)!
-? Choose the runtime that you want to use: NodeJS
-? Choose the function template that you want to use: Hello World
+Check AWS CloudFormation console and CloudWatch logs for detailed errors.
 
-✅ Available advanced settings:
-- Resource access permissions
-- Scheduled recurring invocation
-- Lambda layers configuration
-- Environment variables configuration
-- Secret values configuration
+### GraphQL Errors
+- Verify schema deployment: `amplify status`
+- Check AppSync console for resolver errors
+- Confirm authentication mode matches operation requirements
 
-? Do you want to configure advanced settings? Yes
-? Do you want to access other resources in this project from your Lambda function? No
-? Do you want to invoke this function on a recurring schedule? No
-? Do you want to enable Lambda layers for this function? No
-? Do you want to configure environment variables for this function? No
-? Do you want to configure secret values this function can access? No
-✔ Choose the package manager that you want to use: · NPM
-? Do you want to edit the local lambda function now? Yes
-Edit the file in your editor: /Users/ianhou/workplace/amplify-cli/amplify-migration-apps/app-0/amplify/backend/function/quotegenerator/src/index.js
-```
+## 📚 Documentation
 
-Overwrite the Hello World code in `index.js` with the following:
-```js
-/**
- * AppSync Lambda function handler
- * When using @function directive, return data directly (not API Gateway proxy format)
- */
-exports.handler = async (event) => {
-    console.log(`EVENT: ${JSON.stringify(event)}`);
-    
-    // Array of motivational quotes
-    const quotes = [
-        { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
-        { text: "Innovation distinguishes between a leader and a follower.", author: "Steve Jobs" },
-        { text: "Stay hungry, stay foolish.", author: "Steve Jobs" },
-        { text: "Code is like humor. When you have to explain it, it's bad.", author: "Cory House" },
-        { text: "First, solve the problem. Then, write the code.", author: "John Johnson" },
-        { text: "Experience is the name everyone gives to their mistakes.", author: "Oscar Wilde" },
-        { text: "In order to be irreplaceable, one must always be different.", author: "Coco Chanel" },
-        { text: "Java is to JavaScript what car is to Carpet.", author: "Chris Heilmann" },
-        { text: "Knowledge is power.", author: "Francis Bacon" },
-        { text: "Sometimes it pays to stay in bed on Monday, rather than spending the rest of the week debugging Monday's code.", author: "Dan Salomon" },
-        { text: "Perfection is achieved not when there is nothing more to add, but rather when there is nothing more to take away.", author: "Antoine de Saint-Exupery" },
-        { text: "Programming isn't about what you know; it's about what you can figure out.", author: "Chris Pine" },
-        { text: "The best error message is the one that never shows up.", author: "Thomas Fuchs" },
-        { text: "Simplicity is the soul of efficiency.", author: "Austin Freeman" }
-    ];
-    
-    // Get a random quote
-    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-    
-    // Add timestamp for uniqueness
-    const timestamp = new Date().toISOString();
-    
-    // For AppSync @function directive, return the data object directly
-    return {
-        message: 'Quote generated successfully! 🎯',
-        quote: randomQuote.text,
-        author: randomQuote.author,
-        timestamp: timestamp,
-        totalQuotes: quotes.length
-    };
-};
+See the `/docs` directory for detailed documentation:
+- Architecture overview
+- Development guidelines
+- Deployment procedures
+- Troubleshooting guide
 
-```
+## 🤝 Contributing
 
+1. Follow the guidelines in `AGENTS.md`
+2. Use the specified commit message format
+3. Test all changes thoroughly
+4. Update documentation as needed
 
-```bash
-? Press enter to continue 
-✅ Successfully added resource quotegenerator locally.
-```
+## 📄 License
 
-```bash
-amplify push # select Y for all prompts
-```
+This project is private and not licensed for public use.
 
-```bash
-amplify add hosting # use the Amplify Console option
-amplify publish
-```
+## 🙏 Acknowledgments
+
+- Built with AWS Amplify Gen1
+- Powered by React and TypeScript
+- Fitness motivation quotes curated for inspiration
+
+---
+
+**Stay Strong! 💪 Track Your Progress! 📈 Achieve Your Goals! 🎯**

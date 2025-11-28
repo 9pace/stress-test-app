@@ -1,8 +1,9 @@
 {
-  "name": "app-0",
+  "name": "fitness-goal-tracker",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "description": "A fitness goal tracking application to manage workout programs and exercises with progress photos",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

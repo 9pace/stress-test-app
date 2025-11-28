@@ -104,9 +104,9 @@ const getThemedStyles = (theme: Theme) => {
     container: {
       padding: 20,
       fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-      backgroundColor: isDark ? '#1a1a1a' : '#f5f7fa',
+      backgroundColor: isDark ? '#1a1a1a' : '#f0f4f8',
       minHeight: '100vh',
-      color: isDark ? '#e1e8ed' : '#2c3e50',
+      color: isDark ? '#e1e8ed' : '#2d3748',
     },
     header: {
       textAlign: 'center' as const,
@@ -116,7 +116,7 @@ const getThemedStyles = (theme: Theme) => {
       borderRadius: 8,
       width: 'fit-content',
       margin: '0 auto 30px auto',
-      color: isDark ? '#e1e8ed' : '#2c3e50',
+      color: isDark ? '#e1e8ed' : '#2d3748',
     },
     mainContent: {
       margin: '0 auto',
@@ -160,12 +160,12 @@ const getThemedStyles = (theme: Theme) => {
       width: '100%',
       boxSizing: 'border-box' as const,
       transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
-      color: isDark ? '#e1e8ed' : '#2c3e50',
+      color: isDark ? '#e1e8ed' : '#2d3748',
     },
     todoName: {
       fontSize: 20,
       fontWeight: '600' as const,
-      color: isDark ? '#e1e8ed' : '#2c3e50',
+      color: isDark ? '#e1e8ed' : '#2d3748',
       marginBottom: 8,
       marginTop: 0,
     },
@@ -176,7 +176,7 @@ const getThemedStyles = (theme: Theme) => {
       lineHeight: 1.5,
     },
     button: {
-      backgroundColor: '#007bff',
+      backgroundColor: '#e85d04',
       color: 'white',
       border: 'none',
       fontSize: 16,
@@ -189,12 +189,12 @@ const getThemedStyles = (theme: Theme) => {
     },
     fileSelected: {
       fontSize: 14,
-      color: '#28a745',
+      color: '#2a9d8f',
       marginBottom: 16,
       padding: 8,
-      backgroundColor: isDark ? '#1a2e1a' : '#d4edda',
+      backgroundColor: isDark ? '#1a3a35' : '#d4f1e8',
       borderRadius: 6,
-      border: isDark ? '1px solid #2d5a2d' : '1px solid #c3e6cb',
+      border: isDark ? '1px solid #2a9d8f' : '1px solid #a7dfd0',
     },
     imageFrame: {
       padding: 12,
@@ -211,7 +211,7 @@ const getThemedStyles = (theme: Theme) => {
       justifyContent: 'flex-end',
     },
     editButton: {
-      backgroundColor: '#e09d00ff',
+      backgroundColor: '#f48c06',
       color: 'white',
       border: 'none',
       padding: '8px 16px',
@@ -222,7 +222,7 @@ const getThemedStyles = (theme: Theme) => {
       transition: 'background-color 0.2s ease',
     },
     deleteButton: {
-      backgroundColor: '#dc3545',
+      backgroundColor: '#d62828',
       color: 'white',
       border: 'none',
       padding: '8px 16px',
@@ -233,7 +233,7 @@ const getThemedStyles = (theme: Theme) => {
       transition: 'background-color 0.2s ease',
     },
     saveButton: {
-      backgroundColor: '#28a745',
+      backgroundColor: '#2a9d8f',
       color: 'white',
       border: 'none',
       padding: '10px 20px',
@@ -267,7 +267,7 @@ const getThemedStyles = (theme: Theme) => {
       marginLeft: 12,
       padding: '10px 20px',
       fontSize: 14,
-      backgroundColor: '#007bff',
+      backgroundColor: '#e85d04',
       color: 'white',
       border: 'none',
       borderRadius: 6,
@@ -288,7 +288,7 @@ const getThemedStyles = (theme: Theme) => {
     formTitle: {
       fontSize: 24,
       fontWeight: '600' as const,
-      color: isDark ? '#e1e8ed' : '#2c3e50',
+      color: isDark ? '#e1e8ed' : '#2d3748',
       marginBottom: 20,
       textAlign: 'center' as const,
     },
@@ -319,7 +319,7 @@ const getThemedStyles = (theme: Theme) => {
     editSectionLabel: {
       fontSize: 14,
       fontWeight: '600' as const,
-      color: isDark ? '#e1e8ed' : '#2c3e50',
+      color: isDark ? '#e1e8ed' : '#2d3748',
       marginBottom: 8,
       marginTop: 0,
     },
@@ -343,7 +343,7 @@ const getThemedStyles = (theme: Theme) => {
       flex: 1,
     },
     removeImageButton: {
-      backgroundColor: '#dc3545',
+      backgroundColor: '#d62828',
       color: 'white',
       border: 'none',
       padding: '4px 8px',
@@ -353,7 +353,7 @@ const getThemedStyles = (theme: Theme) => {
       transition: 'background-color 0.2s ease',
     },
     addImagesButton: {
-      backgroundColor: '#28a745',
+      backgroundColor: '#2a9d8f',
       color: 'white',
       border: 'none',
       padding: '8px 16px',
@@ -453,7 +453,7 @@ const ImageDisplay: React.FC<{ imagePath: string }> = ({ imagePath }) => {
         onMouseLeave={() => setShowTooltip(false)}
         style={{ position: 'relative', display: 'inline-block', width: '100%' }}
       >
-        <img src={imageUrl} alt="Todo attachment" style={styles.image} />
+        <img src={imageUrl} alt="Progress photo" style={styles.image} />
         {showTooltip && fileProperties && (
           <div style={styles.tooltip}>
             <div style={styles.tooltipContent}>
@@ -499,7 +499,7 @@ const MultiImageDisplay: React.FC<{ imagePaths: string[] }> = ({ imagePaths }) =
       <ImageDisplay imagePath={imagePaths[selectedImageIndex]} />
       {imagePaths.length > 1 && (
         <div style={styles.imageSelector}>
-          <p style={styles.imageSelectorLabel}>📷 Images ({imagePaths.length}):</p>
+          <p style={styles.imageSelectorLabel}>📷 Photos ({imagePaths.length}):</p>
           <div style={styles.imageThumbnails}>
             {imagePaths.map((path, index) => (
               <button
@@ -530,14 +530,14 @@ const ReadOnlyApp: React.FC = () => {
   const themedStyles = getThemedStyles(theme);
 
   const statusColors: Record<ProjectStatus, string> = {
-    ACTIVE: '#28a745',
-    COMPLETED: '#6c757d',
-    ON_HOLD: '#ffc107',
-    ARCHIVED: '#6f42c1',
+    ACTIVE: '#e85d04',
+    COMPLETED: '#2a9d8f',
+    ON_HOLD: '#f48c06',
+    ARCHIVED: '#6c757d',
   };
 
   const statusEmojis: Record<ProjectStatus, string> = {
-    ACTIVE: '🚀',
+    ACTIVE: '💪',
     COMPLETED: '✅',
     ON_HOLD: '⏸️',
     ARCHIVED: '📦',
@@ -556,7 +556,7 @@ const ReadOnlyApp: React.FC = () => {
       const fetchedProjects = (projectData.data.listProjects?.items?.filter(Boolean) as Project[]) || [];
       setProjects(fetchedProjects);
     } catch (err) {
-      console.log('Error fetching projects:', err);
+      console.log('Error fetching workout programs:', err);
     }
   }
 
@@ -568,7 +568,7 @@ const ReadOnlyApp: React.FC = () => {
       const todos = todoData.data.listTodos.items;
       setTodos(todos);
     } catch (err) {
-      console.log('error fetching todos');
+      console.log('error fetching exercises');
     }
   }
 
@@ -587,7 +587,7 @@ const ReadOnlyApp: React.FC = () => {
       <div style={themedStyles.header}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Heading level={1} style={themedStyles.header}>
-            📋 Project Boards
+            💪 Fitness Goal Tracker
           </Heading>
           <button style={themedStyles.themeToggle} onClick={toggleTheme}>
             {theme === 'light' ? '🌙' : '☀️'}
@@ -596,13 +596,13 @@ const ReadOnlyApp: React.FC = () => {
         <p style={themedStyles.readOnlyMessage}>
           You're viewing in read-only mode.
           <Button style={themedStyles.loginButton} onClick={() => setShowLogin(true)}>
-            Sign in to create and edit todos
+            Sign in to track your fitness goals
           </Button>
         </p>
       </div>
 
       <div style={{ maxWidth: 1600, margin: '0 auto' }}>
-        {/* Project Boards */}
+        {/* Workout Programs */}
         {projects.length > 0 ? (
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24, marginBottom: 24, alignItems: 'flex-start' }}>
             {projects.map((project) => {
@@ -638,14 +638,14 @@ const ReadOnlyApp: React.FC = () => {
                       </span>
                       {project.owner && (
                         <span style={{ fontSize: 11, color: themedStyles.todoDescription.color, fontStyle: 'italic' }}>
-                          👤 Owner: {project.owner}
+                          👤 Athlete: {project.owner}
                         </span>
                       )}
                     </div>
                   </div>
 
                   <div style={{ fontSize: 14, color: themedStyles.todoDescription.color, marginBottom: 12 }}>
-                    📋 {projectTodos.length} todo{projectTodos.length !== 1 ? 's' : ''}
+                    🏋️ {projectTodos.length} exercise{projectTodos.length !== 1 ? 's' : ''}
                   </div>
 
                   {projectTodos.length > 0 && (
@@ -666,7 +666,7 @@ const ReadOnlyApp: React.FC = () => {
                             <p
                               style={{ margin: '0 0 8px 0', fontSize: 10, color: themedStyles.todoDescription.color, fontStyle: 'italic' }}
                             >
-                              👤 Owner: {todo.owner}
+                              👤 Athlete: {todo.owner}
                             </p>
                           )}
                           {todo.images && todo.images.length > 0 && (
@@ -684,7 +684,7 @@ const ReadOnlyApp: React.FC = () => {
           </div>
         ) : null}
 
-        {/* Unassigned Todos */}
+        {/* Unassigned Exercises */}
         {unassignedTodos.length > 0 && (
           <div
             style={{
@@ -694,8 +694,8 @@ const ReadOnlyApp: React.FC = () => {
             }}
           >
             <div style={{ marginBottom: 16 }}>
-              <h3 style={{ ...themedStyles.todoName, margin: 0 }}>📝 Unassigned Todos</h3>
-              <p style={{ ...themedStyles.todoDescription, margin: '4px 0' }}>Todos that haven't been assigned to any project</p>
+              <h3 style={{ ...themedStyles.todoName, margin: 0 }}>🏃 Standalone Exercises</h3>
+              <p style={{ ...themedStyles.todoDescription, margin: '4px 0' }}>Exercises not assigned to any program</p>
               <span
                 style={{
                   fontSize: 12,
@@ -706,12 +706,12 @@ const ReadOnlyApp: React.FC = () => {
                   fontWeight: '600',
                 }}
               >
-                DEFAULT
+                UNASSIGNED
               </span>
             </div>
 
             <div style={{ fontSize: 14, color: themedStyles.todoDescription.color, marginBottom: 12 }}>
-              📋 {unassignedTodos.length} todo{unassignedTodos.length !== 1 ? 's' : ''}
+              🏋️ {unassignedTodos.length} exercise{unassignedTodos.length !== 1 ? 's' : ''}
             </div>
 
             <div style={{ display: 'grid', gap: 12 }}>
@@ -741,8 +741,8 @@ const ReadOnlyApp: React.FC = () => {
         {/* Empty state */}
         {projects.length === 0 && todos.length === 0 && (
           <div style={themedStyles.emptyMessage}>
-            <h3>🚀 Welcome to Project Boards!</h3>
-            <p>No projects or todos yet. Sign in to create some!</p>
+            <h3>💪 Welcome to Fitness Goal Tracker!</h3>
+            <p>No workout programs or exercises yet. Sign in to start your fitness journey!</p>
           </div>
         )}
       </div>
@@ -750,7 +750,7 @@ const ReadOnlyApp: React.FC = () => {
   );
 };
 
-// Project Board component
+// Workout Program component
 const ProjectBoard: React.FC<{
   project: Project;
   todos: Todo[];
@@ -768,20 +768,20 @@ const ProjectBoard: React.FC<{
     title: project.title,
     description: project.description || '',
     status: project.status,
-    color: project.color || '#007bff',
+    color: project.color || '#e85d04',
   });
 
   const projectTodos = todos.filter((todo) => todo.projectID === project.id);
 
   const statusColors: Record<ProjectStatus, string> = {
-    ACTIVE: '#28a745',
-    COMPLETED: '#6c757d',
-    ON_HOLD: '#ffc107',
-    ARCHIVED: '#6f42c1',
+    ACTIVE: '#e85d04',
+    COMPLETED: '#2a9d8f',
+    ON_HOLD: '#f48c06',
+    ARCHIVED: '#6c757d',
   };
 
   const statusEmojis: Record<ProjectStatus, string> = {
-    ACTIVE: '🚀',
+    ACTIVE: '💪',
     COMPLETED: '✅',
     ON_HOLD: '⏸️',
     ARCHIVED: '📦',
@@ -806,7 +806,7 @@ const ProjectBoard: React.FC<{
         setIsEditing(false);
       }
     } catch (err) {
-      console.log('Error updating project:', err);
+      console.log('Error updating workout program:', err);
     }
   }
 
@@ -823,22 +823,22 @@ const ProjectBoard: React.FC<{
             value={editForm.title}
             onChange={(e) => setEditForm({ ...editForm, title: e.target.value })}
             style={themedStyles.input}
-            placeholder="Project title"
+            placeholder="Program name"
           />
           <input
             value={editForm.description}
             onChange={(e) => setEditForm({ ...editForm, description: e.target.value })}
             style={themedStyles.input}
-            placeholder="Project description"
+            placeholder="Program description"
           />
           <select
             value={editForm.status}
             onChange={(e) => setEditForm({ ...editForm, status: e.target.value as ProjectStatus })}
             style={themedStyles.input}
           >
-            <option value="ACTIVE">🚀 Active</option>
-            <option value="COMPLETED">✅ Completed</option>
-            <option value="ON_HOLD">⏸️ On Hold</option>
+            <option value="ACTIVE">💪 Active</option>
+            <option value="COMPLETED">✅ Achieved</option>
+            <option value="ON_HOLD">⏸️ Paused</option>
             <option value="ARCHIVED">📦 Archived</option>
           </select>
           <input
@@ -849,7 +849,7 @@ const ProjectBoard: React.FC<{
           />
           <div style={themedStyles.buttonGroup}>
             <button style={themedStyles.saveButton} onClick={handleUpdateProject}>
-              ✅ Save Project
+              ✅ Save Program
             </button>
             <button style={themedStyles.cancelButton} onClick={() => setIsEditing(false)}>
               ❌ Cancel
@@ -881,7 +881,7 @@ const ProjectBoard: React.FC<{
                 </span>
                 {project.owner && (
                   <span style={{ fontSize: 11, color: themedStyles.todoDescription.color, fontStyle: 'italic' }}>
-                    👤 {project.owner === user?.username ? 'You' : `Owner: ${project.owner}`}
+                    👤 {project.owner === user?.username ? 'You' : `Athlete: ${project.owner}`}
                   </span>
                 )}
               </div>
@@ -899,7 +899,7 @@ const ProjectBoard: React.FC<{
           </div>
 
           <div style={{ fontSize: 14, color: themedStyles.todoDescription.color, marginBottom: 12 }}>
-            📋 {projectTodos.length} todo{projectTodos.length !== 1 ? 's' : ''}
+            🏋️ {projectTodos.length} exercise{projectTodos.length !== 1 ? 's' : ''}
           </div>
 
           {projectTodos.length > 0 && (
@@ -915,7 +915,7 @@ const ProjectBoard: React.FC<{
   );
 };
 
-// Todo Card Component
+// Exercise Card Component
 const TodoCard: React.FC<{
   todo: Todo;
   onUpdate: (todo: Todo) => void;
@@ -955,7 +955,7 @@ const TodoCard: React.FC<{
         setIsEditing(false);
       }
     } catch (err) {
-      console.log('Error updating todo:', err);
+      console.log('Error updating exercise:', err);
     } finally {
       setUploading(false);
     }
@@ -980,7 +980,7 @@ const TodoCard: React.FC<{
         onUpdate((result as any).data.updateTodo as Todo);
       }
     } catch (err) {
-      console.log('Error updating todo project:', err);
+      console.log('Error updating exercise program:', err);
     } finally {
       setUploading(false);
     }
@@ -1000,13 +1000,13 @@ const TodoCard: React.FC<{
           value={editFormState.name || ''}
           onChange={(e) => setEditFormState({ ...editFormState, name: e.target.value })}
           style={themedStyles.input}
-          placeholder="Todo name"
+          placeholder="Exercise name"
         />
         <input
           value={editFormState.description || ''}
           onChange={(e) => setEditFormState({ ...editFormState, description: e.target.value })}
           style={themedStyles.input}
-          placeholder="Description"
+          placeholder="Description (sets, reps, notes)"
         />
         <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
           <button style={themedStyles.saveButton} onClick={handleUpdateTodo} disabled={uploading}>
@@ -1028,7 +1028,7 @@ const TodoCard: React.FC<{
           <p style={{ margin: '0 0 4px 0', fontSize: 12, color: themedStyles.todoDescription.color }}>{todo.description}</p>
           {todo.owner && (
             <p style={{ margin: 0, fontSize: 10, color: themedStyles.todoDescription.color, fontStyle: 'italic' }}>
-              👤 {todo.owner === user?.username ? 'You' : `Owner: ${todo.owner}`}
+              👤 {todo.owner === user?.username ? 'You' : `Athlete: ${todo.owner}`}
             </p>
           )}
         </div>
@@ -1044,7 +1044,7 @@ const TodoCard: React.FC<{
         )}
       </div>
 
-      {/* Project Selector */}
+      {/* Program Selector */}
       {todo.owner === user?.username && projects.length > 0 && (
         <div style={{ marginTop: 8 }}>
           <select
@@ -1059,10 +1059,10 @@ const TodoCard: React.FC<{
             }}
             disabled={uploading}
           >
-            <option value="">📝 Unassigned</option>
+            <option value="">🏃 Standalone</option>
             {projects.map((project) => (
               <option key={project.id} value={project.id}>
-                📋 {project.title}
+                💪 {project.title}
               </option>
             ))}
           </select>
@@ -1092,7 +1092,7 @@ const AuthenticatedApp: React.FC<AppProps> = ({ signOut, user }) => {
     title: '',
     description: '',
     status: 'ACTIVE' as ProjectStatus,
-    color: '#007bff',
+    color: '#e85d04',
   });
 
   // Todo form state
@@ -1124,7 +1124,7 @@ const AuthenticatedApp: React.FC<AppProps> = ({ signOut, user }) => {
       });
       setProjects((projectData.data.listProjects?.items?.filter(Boolean) as Project[]) || []);
     } catch (err) {
-      console.log('Error fetching projects:', err);
+      console.log('Error fetching workout programs:', err);
     }
   }
 
@@ -1136,7 +1136,7 @@ const AuthenticatedApp: React.FC<AppProps> = ({ signOut, user }) => {
       const todos = todoData.data.listTodos.items;
       setTodos(todos);
     } catch (err) {
-      console.log(`error fetching todos: ${JSON.stringify(err)}`);
+      console.log(`error fetching exercises: ${JSON.stringify(err)}`);
     }
   }
 
@@ -1165,12 +1165,12 @@ const AuthenticatedApp: React.FC<AppProps> = ({ signOut, user }) => {
           title: '',
           description: '',
           status: 'ACTIVE' as ProjectStatus,
-          color: '#007bff',
+          color: '#e85d04',
         });
         setShowProjectForm(false);
       }
     } catch (err) {
-      console.log('Error creating project:', err);
+      console.log('Error creating workout program:', err);
     } finally {
       setUploading(false);
     }
@@ -1231,7 +1231,7 @@ const AuthenticatedApp: React.FC<AppProps> = ({ signOut, user }) => {
         }
       }
     } catch (err) {
-      console.log('Error creating todo:', err);
+      console.log('Error creating exercise:', err);
     } finally {
       setUploading(false);
     }
@@ -1251,7 +1251,7 @@ const AuthenticatedApp: React.FC<AppProps> = ({ signOut, user }) => {
       });
       setTodos(todos.filter((todo) => todo.id !== todoId));
     } catch (err) {
-      console.log('Error deleting todo:', err);
+      console.log('Error deleting exercise:', err);
     }
   }
 
@@ -1269,7 +1269,7 @@ const AuthenticatedApp: React.FC<AppProps> = ({ signOut, user }) => {
       });
       setProjects(projects.filter((project) => project.id !== projectId));
     } catch (err) {
-      console.log('Error deleting project:', err);
+      console.log('Error deleting workout program:', err);
     }
   }
 
@@ -1289,7 +1289,7 @@ const AuthenticatedApp: React.FC<AppProps> = ({ signOut, user }) => {
         setQuote((result as any).data.getRandomQuote as QuoteData);
       }
     } catch (err) {
-      console.log('Error fetching quote:', err);
+      console.log('Error fetching motivation:', err);
     } finally {
       setLoadingQuote(false);
     }
@@ -1301,7 +1301,7 @@ const AuthenticatedApp: React.FC<AppProps> = ({ signOut, user }) => {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ flex: 1 }}>
             <Heading level={1} style={themedStyles.header}>
-              📋 Project Boards
+              💪 Fitness Goal Tracker
             </Heading>
             <Heading
               level={3}
@@ -1324,41 +1324,41 @@ const AuthenticatedApp: React.FC<AppProps> = ({ signOut, user }) => {
       <div style={themedStyles.mainContent}>
         {/* Sidebar with forms */}
         <div style={themedStyles.formCard}>
-          {/* Project Form */}
+          {/* Program Form */}
           {showProjectForm ? (
             <div>
-              <h2 style={themedStyles.formTitle}>Create Project Board</h2>
+              <h2 style={themedStyles.formTitle}>Create Workout Program</h2>
               <input
                 value={projectForm.title}
                 onChange={(e) => setProjectForm({ ...projectForm, title: e.target.value })}
                 style={themedStyles.input}
-                placeholder="Project title"
+                placeholder="Program name"
               />
               <input
                 value={projectForm.description || ''}
                 onChange={(e) => setProjectForm({ ...projectForm, description: e.target.value })}
                 style={themedStyles.input}
-                placeholder="Project description"
+                placeholder="Program description"
               />
               <select
                 value={projectForm.status}
                 onChange={(e) => setProjectForm({ ...projectForm, status: e.target.value as ProjectStatus })}
                 style={themedStyles.input}
               >
-                <option value="ACTIVE">🚀 Active</option>
-                <option value="COMPLETED">✅ Completed</option>
-                <option value="ON_HOLD">⏸️ On Hold</option>
+                <option value="ACTIVE">💪 Active</option>
+                <option value="COMPLETED">✅ Achieved</option>
+                <option value="ON_HOLD">⏸️ Paused</option>
                 <option value="ARCHIVED">📦 Archived</option>
               </select>
               <input
                 type="color"
-                value={projectForm.color || '#007bff'}
+                value={projectForm.color || '#e85d04'}
                 onChange={(e) => setProjectForm({ ...projectForm, color: e.target.value })}
                 style={{ ...themedStyles.input, height: 50 }}
               />
               <div style={{ display: 'flex', gap: 8 }}>
                 <button style={themedStyles.saveButton} onClick={createNewProject} disabled={uploading}>
-                  {uploading ? '⏳' : '✅'} Create Project
+                  {uploading ? '⏳' : '✅'} Create Program
                 </button>
                 <button style={themedStyles.cancelButton} onClick={() => setShowProjectForm(false)}>
                   ❌ Cancel
@@ -1367,21 +1367,21 @@ const AuthenticatedApp: React.FC<AppProps> = ({ signOut, user }) => {
             </div>
           ) : showTodoForm ? (
             <div>
-              <h2 style={themedStyles.formTitle}>Create Todo</h2>
+              <h2 style={themedStyles.formTitle}>Add Exercise</h2>
               <input
                 value={todoForm.name}
                 onChange={(e) => setTodoForm({ ...todoForm, name: e.target.value })}
                 style={themedStyles.input}
-                placeholder="Todo name"
+                placeholder="Exercise name"
               />
               <input
                 value={todoForm.description || ''}
                 onChange={(e) => setTodoForm({ ...todoForm, description: e.target.value })}
                 style={themedStyles.input}
-                placeholder="Description"
+                placeholder="Sets, reps, notes"
               />
               <select value={selectedProject} onChange={(e) => setSelectedProject(e.target.value)} style={themedStyles.input}>
-                <option value="">Select Project (Optional)</option>
+                <option value="">Select Program (Optional)</option>
                 {projects.map((project) => (
                   <option key={project.id} value={project.id}>
                     {project.title}
@@ -1391,12 +1391,12 @@ const AuthenticatedApp: React.FC<AppProps> = ({ signOut, user }) => {
               <input ref={fileInputRef} type="file" accept="image/*" multiple onChange={handleFileSelect} style={themedStyles.input} />
               {selectedFiles.length > 0 && (
                 <p style={themedStyles.fileSelected}>
-                  📎 Selected: {selectedFiles.length} file{selectedFiles.length > 1 ? 's' : ''}
+                  📎 Selected: {selectedFiles.length} photo{selectedFiles.length > 1 ? 's' : ''}
                 </p>
               )}
               <div style={{ display: 'flex', gap: 8 }}>
                 <button style={themedStyles.saveButton} onClick={createNewTodo} disabled={uploading}>
-                  {uploading ? '⏳' : '✅'} Create Todo
+                  {uploading ? '⏳' : '✅'} Add Exercise
                 </button>
                 <button style={themedStyles.cancelButton} onClick={() => setShowTodoForm(false)}>
                   ❌ Cancel
@@ -1407,27 +1407,27 @@ const AuthenticatedApp: React.FC<AppProps> = ({ signOut, user }) => {
             <div>
               <h2 style={themedStyles.formTitle}>Quick Actions</h2>
               <button style={{ ...themedStyles.button, marginBottom: 16 }} onClick={() => setShowProjectForm(true)}>
-                🚀 New Project Board
+                💪 New Workout Program
               </button>
               <button style={themedStyles.button} onClick={() => setShowTodoForm(true)}>
-                ➕ New Todo
+                ➕ Add Exercise
               </button>
 
               <div style={{ marginTop: 24, padding: 16, backgroundColor: theme === 'dark' ? '#374151' : '#f8f9fa', borderRadius: 8 }}>
-                <h3 style={{ ...themedStyles.formTitle, fontSize: 18, marginBottom: 12 }}>📊 Overview</h3>
+                <h3 style={{ ...themedStyles.formTitle, fontSize: 18, marginBottom: 12 }}>📊 Your Stats</h3>
                 <p style={{ margin: '4px 0', fontSize: 14 }}>
-                  📋 {projects.length} Project{projects.length !== 1 ? 's' : ''}
+                  💪 {projects.length} Program{projects.length !== 1 ? 's' : ''}
                 </p>
                 <p style={{ margin: '4px 0', fontSize: 14 }}>
-                  ✅ {todos.length} Total Todo{todos.length !== 1 ? 's' : ''}
+                  🏋️ {todos.length} Total Exercise{todos.length !== 1 ? 's' : ''}
                 </p>
-                <p style={{ margin: '4px 0', fontSize: 14 }}>📝 {unassignedTodos.length} Unassigned</p>
+                <p style={{ margin: '4px 0', fontSize: 14 }}>🏃 {unassignedTodos.length} Standalone</p>
               </div>
 
               <div style={{ marginTop: 24, padding: 16, backgroundColor: theme === 'dark' ? '#374151' : '#f8f9fa', borderRadius: 8 }}>
-                <h3 style={{ ...themedStyles.formTitle, fontSize: 18, marginBottom: 12 }}>💡 Get Inspiration</h3>
+                <h3 style={{ ...themedStyles.formTitle, fontSize: 18, marginBottom: 12 }}>🔥 Daily Motivation</h3>
                 <button style={{ ...themedStyles.button, marginBottom: quote ? 16 : 0 }} onClick={fetchRandomQuote} disabled={loadingQuote}>
-                  {loadingQuote ? '⏳ Loading...' : '🎯 Get Random Quote'}
+                  {loadingQuote ? '⏳ Loading...' : '💪 Get Motivated'}
                 </button>
                 {quote && (
                   <div
@@ -1435,7 +1435,7 @@ const AuthenticatedApp: React.FC<AppProps> = ({ signOut, user }) => {
                       padding: 16,
                       backgroundColor: theme === 'dark' ? '#2d3748' : 'white',
                       borderRadius: 8,
-                      borderLeft: '4px solid #007bff',
+                      borderLeft: '4px solid #e85d04',
                     }}
                   >
                     <p
@@ -1443,7 +1443,7 @@ const AuthenticatedApp: React.FC<AppProps> = ({ signOut, user }) => {
                         margin: '0 0 8px 0',
                         fontSize: 15,
                         fontStyle: 'italic',
-                        color: theme === 'dark' ? '#e1e8ed' : '#2c3e50',
+                        color: theme === 'dark' ? '#e1e8ed' : '#2d3748',
                         lineHeight: 1.6,
                       }}
                     >
@@ -1475,9 +1475,9 @@ const AuthenticatedApp: React.FC<AppProps> = ({ signOut, user }) => {
           )}
         </div>
 
-        {/* Main content area with project boards */}
+        {/* Main content area with workout programs */}
         <div>
-          {/* Project Boards */}
+          {/* Workout Programs */}
           {projects.length > 0 && (
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24, marginBottom: 24, alignItems: 'flex-start' }}>
               {projects.map((project) => (
@@ -1496,7 +1496,7 @@ const AuthenticatedApp: React.FC<AppProps> = ({ signOut, user }) => {
             </div>
           )}
 
-          {/* Default Project Board for Unassigned Todos */}
+          {/* Standalone Exercises */}
           {unassignedTodos.length > 0 && (
             <div
               style={{
@@ -1507,8 +1507,8 @@ const AuthenticatedApp: React.FC<AppProps> = ({ signOut, user }) => {
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
                 <div>
-                  <h3 style={{ ...themedStyles.todoName, margin: 0 }}>📝 Unassigned Todos</h3>
-                  <p style={{ ...themedStyles.todoDescription, margin: '4px 0' }}>Todos that haven't been assigned to any project</p>
+                  <h3 style={{ ...themedStyles.todoName, margin: 0 }}>🏃 Standalone Exercises</h3>
+                  <p style={{ ...themedStyles.todoDescription, margin: '4px 0' }}>Exercises not assigned to any program</p>
                   <span
                     style={{
                       fontSize: 12,
@@ -1519,14 +1519,14 @@ const AuthenticatedApp: React.FC<AppProps> = ({ signOut, user }) => {
                       fontWeight: '600',
                     }}
                   >
-                    DEFAULT
+                    UNASSIGNED
                   </span>
                 </div>
                 <div style={{ fontSize: 12, color: themedStyles.todoDescription.color }}>Cannot be deleted</div>
               </div>
 
               <div style={{ fontSize: 14, color: themedStyles.todoDescription.color, marginBottom: 12 }}>
-                📋 {unassignedTodos.length} todo{unassignedTodos.length !== 1 ? 's' : ''}
+                🏋️ {unassignedTodos.length} exercise{unassignedTodos.length !== 1 ? 's' : ''}
               </div>
 
               <div style={{ display: 'grid', gap: 12 }}>
@@ -1547,8 +1547,8 @@ const AuthenticatedApp: React.FC<AppProps> = ({ signOut, user }) => {
           {/* Empty state */}
           {projects.length === 0 && todos.length === 0 && (
             <div style={themedStyles.emptyMessage}>
-              <h3>🚀 Welcome to Project Boards!</h3>
-              <p>Create your first project board to organize your todos</p>
+              <h3>💪 Start Your Fitness Journey!</h3>
+              <p>Create your first workout program to organize your exercises</p>
             </div>
           )}
         </div>
@@ -1623,7 +1623,7 @@ const styles = {
   container: {
     padding: 20,
     fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-    backgroundColor: '#f5f7fa',
+    backgroundColor: '#f0f4f8',
     minHeight: '100vh',
   },
   header: {
@@ -1682,14 +1682,14 @@ const styles = {
     transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
   },
   inputFocus: {
-    borderColor: '#007bff',
-    boxShadow: '0 0 0 3px rgba(0,123,255,0.1)',
+    borderColor: '#e85d04',
+    boxShadow: '0 0 0 3px rgba(232,93,4,0.1)',
     outline: 'none',
   },
   todoName: {
     fontSize: 20,
     fontWeight: '600' as const,
-    color: '#2c3e50',
+    color: '#2d3748',
     marginBottom: 8,
     marginTop: 0,
   },
@@ -1700,7 +1700,7 @@ const styles = {
     lineHeight: 1.5,
   },
   button: {
-    backgroundColor: '#007bff',
+    backgroundColor: '#e85d04',
     color: 'white',
     border: 'none',
     fontSize: 16,
@@ -1712,17 +1712,17 @@ const styles = {
     transition: 'background-color 0.2s ease, transform 0.1s ease',
   },
   buttonHover: {
-    backgroundColor: '#0056b3',
+    backgroundColor: '#d04e03',
     transform: 'translateY(-1px)',
   },
   fileSelected: {
     fontSize: 14,
-    color: '#28a745',
+    color: '#2a9d8f',
     marginBottom: 16,
     padding: 8,
-    backgroundColor: '#d4edda',
+    backgroundColor: '#d4f1e8',
     borderRadius: 6,
-    border: '1px solid #c3e6cb',
+    border: '1px solid #a7dfd0',
   },
   image: {
     maxWidth: '100%',
@@ -1746,7 +1746,7 @@ const styles = {
     justifyContent: 'flex-end',
   },
   editButton: {
-    backgroundColor: '#17a2b8',
+    backgroundColor: '#f48c06',
     color: 'white',
     border: 'none',
     padding: '8px 16px',
@@ -1757,7 +1757,7 @@ const styles = {
     transition: 'background-color 0.2s ease',
   },
   deleteButton: {
-    backgroundColor: '#dc3545',
+    backgroundColor: '#d62828',
     color: 'white',
     border: 'none',
     padding: '8px 16px',
@@ -1768,7 +1768,7 @@ const styles = {
     transition: 'background-color 0.2s ease',
   },
   saveButton: {
-    backgroundColor: '#28a745',
+    backgroundColor: '#2a9d8f',
     color: 'white',
     border: 'none',
     padding: '10px 20px',
@@ -1802,7 +1802,7 @@ const styles = {
     marginLeft: 12,
     padding: '10px 20px',
     fontSize: 14,
-    backgroundColor: '#007bff',
+    backgroundColor: '#e85d04',
     color: 'white',
     border: 'none',
     borderRadius: 6,
@@ -1823,7 +1823,7 @@ const styles = {
   formTitle: {
     fontSize: 24,
     fontWeight: '600' as const,
-    color: '#2c3e50',
+    color: '#2d3748',
     marginBottom: 20,
     textAlign: 'center' as const,
   },
@@ -1835,7 +1835,7 @@ const styles = {
     margin: '0 auto',
   },
   downloadButton: {
-    backgroundColor: '#6f42c1',
+    backgroundColor: '#e85d04',
     color: 'white',
     border: 'none',
     padding: '8px 16px',
@@ -1876,7 +1876,7 @@ const styles = {
   imageSelectorLabel: {
     fontSize: 14,
     fontWeight: '600' as const,
-    color: '#2c3e50',
+    color: '#2d3748',
     marginBottom: 8,
     marginTop: 0,
   },
@@ -1897,9 +1897,9 @@ const styles = {
     transition: 'all 0.2s ease',
   },
   thumbnailButtonActive: {
-    backgroundColor: '#007bff',
+    backgroundColor: '#e85d04',
     color: 'white',
-    borderColor: '#007bff',
+    borderColor: '#e85d04',
   },
   editImageSection: {
     marginBottom: 16,
@@ -1911,7 +1911,7 @@ const styles = {
   editSectionLabel: {
     fontSize: 14,
     fontWeight: '600' as const,
-    color: '#2c3e50',
+    color: '#2d3748',
     marginBottom: 8,
     marginTop: 0,
   },
@@ -1935,7 +1935,7 @@ const styles = {
     flex: 1,
   },
   removeImageButton: {
-    backgroundColor: '#dc3545',
+    backgroundColor: '#d62828',
     color: 'white',
     border: 'none',
     padding: '4px 8px',
@@ -1945,7 +1945,7 @@ const styles = {
     transition: 'background-color 0.2s ease',
   },
   addImagesButton: {
-    backgroundColor: '#28a745',
+    backgroundColor: '#2a9d8f',
     color: 'white',
     border: 'none',
     padding: '8px 16px',
