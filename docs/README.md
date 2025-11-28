@@ -17,13 +17,14 @@ Complete API reference including endpoints, request/response formats, and exampl
 Guides for setting up development environment, coding standards, and contributing.
 
 ### [🚀 Operations](./operations/)
-Deployment procedures, monitoring, troubleshooting, and operational runbooks.
+Deployment procedures, monitoring, troubleshooting, stress testing, and operational runbooks.
 
 ## Quick Links
 
 - [Getting Started](./development/setup.md)
 - [Architecture Overview](./architecture/README.md)
 - [API Reference](./api/README.md)
+- [Stress Testing Guide](./operations/stress-testing.md)
 - [Troubleshooting Guide](./operations/troubleshooting.md)
 
 ## For AI Assistants

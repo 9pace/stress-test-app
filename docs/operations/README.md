@@ -15,6 +15,14 @@ Complete deployment instructions, including:
 - Security considerations
 - Cost optimization
 
+### [Stress Testing Guide](./stress-testing.md)
+Infrastructure stress testing documentation, including:
+- 100 GraphQL model stress test
+- AWS resource creation and limits
+- Deployment metrics and performance
+- Cleanup procedures
+- Best practices for capacity testing
+
 ### [Troubleshooting Guide](./troubleshooting.md)
 Comprehensive troubleshooting resources, including:
 - Quick diagnostics

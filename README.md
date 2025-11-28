@@ -9,6 +9,13 @@ A comprehensive fitness tracking application built with AWS Amplify Gen1, React,
 
 ## 🎯 Features
 
+### 🧪 Stress Testing Infrastructure
+- 100 additional GraphQL models for Amplify stress testing
+- Tests large-scale CloudFormation deployments
+- Validates AWS service limits and performance
+- Comprehensive documentation for infrastructure testing
+- See [Stress Testing Documentation](./docs/operations/stress-testing.md)
+
 ### 💪 Workout Program Management
 - Create and manage multiple workout programs
 - Track program status: Active, Achieved, Paused, or Archived
