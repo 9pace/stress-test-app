@@ -125,6 +125,8 @@ Settings:
 - Authorization: **API key** (default, 7 days expiration)
 - Conflict detection: **Disabled**
 - Template: **Single object with fields**
+Edit the graphql schema now: 
+copy the /schema.graphql-copy to schema.graphql
 
 The GraphQL schema defines:
 - **Project** model: Workout programs with status tracking
